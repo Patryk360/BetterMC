@@ -5,3 +5,5 @@ description: An test plugin
 author: NeXi
 website: https://papermc.io
 api-version: 1.19
+load: STARTUP
+prefix: BetterMC
