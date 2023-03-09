@@ -1,0 +1,7 @@
+name: BetterMC
+version: 1.0.0
+main: io.papermc.bettermc.test
+description: An test plugin
+author: NeXi
+website: https://papermc.io
+api-version: 1.19
