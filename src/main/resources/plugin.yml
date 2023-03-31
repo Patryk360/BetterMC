@@ -1,0 +1,4 @@
+name: BetterMC
+version: '${project.version}'
+main: me.nexipl.bettermc.BetterMC
+api-version: 1.19
