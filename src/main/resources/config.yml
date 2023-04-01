@@ -1,0 +1,5 @@
+herobrine:
+  totemEnable: true
+  armor: true
+  drops:
+    quantity: 3

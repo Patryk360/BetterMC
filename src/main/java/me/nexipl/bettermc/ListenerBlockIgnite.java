@@ -1,6 +1,7 @@
 package me.nexipl.bettermc;
 
 import me.libraryaddict.disguise.disguisetypes.PlayerDisguise;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -12,14 +13,18 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-
 import java.util.Objects;
 
+import static org.bukkit.Bukkit.getServer;
+
 public class ListenerBlockIgnite implements Listener {
+    private final Plugin plugin = BetterMC.getPlugin(BetterMC.class);
     @EventHandler
     public void onBlockIgnite(BlockIgniteEvent event) {
+        if (!plugin.getConfig().getBoolean("herobrine.totemEnable")) return;
         if (Objects.equals(String.valueOf(event.getCause()), "FLINT_AND_STEEL")) {
             World mainWorld = Objects.requireNonNull(event.getPlayer()).getWorld();
             Location blockL1 = new Location(mainWorld, event.getBlock().getState().getX(), event.getBlock().getState().getY()-1, event.getBlock().getState().getZ());
@@ -29,6 +34,8 @@ public class ListenerBlockIgnite implements Listener {
             Location blockL5 = new Location(mainWorld, event.getBlock().getState().getX(), event.getBlock().getState().getY()-5, event.getBlock().getState().getZ());
 
             Location spawnZombie = new Location(mainWorld, event.getBlock().getState().getX(), event.getBlock().getState().getY()-5, event.getBlock().getState().getZ()+5);
+
+            getServer().getLogger().info(String.valueOf(plugin.getConfig()));
 
             String blockT1 = String.valueOf(blockL1.getBlock().getType());
             String blockT2 = String.valueOf(blockL2.getBlock().getType());
@@ -45,11 +52,14 @@ public class ListenerBlockIgnite implements Listener {
                 disguise.startDisguise();
                 disguise.getWatcher().setCustomName("Herobrine");
                 disguise.getWatcher().setCustomNameVisible(true);
+                zombie.customName(Component.text("Herobrine"));
                 zombie.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 72000, 6));
-                zombie.getEquipment().setBoots(new ItemStack(Material.DIAMOND_BOOTS, 1));
-                zombie.getEquipment().setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS, 1));
-                zombie.getEquipment().setChestplate(new ItemStack(Material.DIAMOND_CHESTPLATE, 1));
-                zombie.getEquipment().setHelmet(new ItemStack(Material.DIAMOND_HELMET, 1));
+                if (plugin.getConfig().getBoolean("herobrine.armor")) {
+                    zombie.getEquipment().setBoots(new ItemStack(Material.DIAMOND_BOOTS, 1));
+                    zombie.getEquipment().setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS, 1));
+                    zombie.getEquipment().setChestplate(new ItemStack(Material.DIAMOND_CHESTPLATE, 1));
+                    zombie.getEquipment().setHelmet(new ItemStack(Material.DIAMOND_HELMET, 1));
+                }
                 zombie.getEquipment().setItemInMainHand(new ItemStack(Material.DIAMOND_PICKAXE));
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     player.sendMessage("Herobrine is coming back!");
