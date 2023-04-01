@@ -1,12 +1,19 @@
 package me.nexipl.bettermc;
 
+import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
+import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockIgniteEvent;
-//import static org.bukkit.Bukkit.getServer;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.Objects;
 
@@ -29,7 +36,20 @@ public class ListenerBlockIgnite implements Listener {
             String blockT4 = String.valueOf(blockL4.getBlock().getType());
             String blockT5 = String.valueOf(blockL5.getBlock().getType());
             if ((Objects.equals(blockT1, "QUARTZ_BLOCK")) && (Objects.equals(blockT2, "GOLD_BLOCK")) && (Objects.equals(blockT3, "GOLD_BLOCK")) && (Objects.equals(blockT4, "GOLD_BLOCK")) && (Objects.equals(blockT5, "GOLD_BLOCK"))) {
-                mainWorld.spawnEntity(spawnZombie, EntityType.ZOMBIE);
+                mainWorld.getBlockAt(blockL1).setType(Material.NETHERRACK);
+                mainWorld.strikeLightning(blockL1);
+                Zombie zombie = (Zombie) mainWorld.spawnEntity(spawnZombie, EntityType.ZOMBIFIED_PIGLIN);
+                zombie.setSilent(true);
+                zombie.customName(Component.text("Herobrine"));
+                zombie.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 72000, 6));
+                zombie.getEquipment().setBoots(new ItemStack(Material.DIAMOND_BOOTS, 1));
+                zombie.getEquipment().setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS, 1));
+                zombie.getEquipment().setChestplate(new ItemStack(Material.DIAMOND_CHESTPLATE, 1));
+                zombie.getEquipment().setHelmet(new ItemStack(Material.DIAMOND_HELMET, 1));
+                zombie.getEquipment().setItemInMainHand(new ItemStack(Material.DIAMOND_PICKAXE));
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    player.sendMessage("Herobrine is coming back!");
+                }
             }
         }
     }
