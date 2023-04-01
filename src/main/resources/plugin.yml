@@ -2,3 +2,10 @@ name: BetterMC
 version: '${project.version}'
 main: me.nexipl.bettermc.BetterMC
 api-version: 1.19
+description: Test plugin
+depend:
+  - LibsDisguises
+commands:
+  distest:
+    usage: /distest
+    description: Test

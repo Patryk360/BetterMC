@@ -1,6 +1,6 @@
 package me.nexipl.bettermc;
 
-import net.kyori.adventure.text.Component;
+import me.libraryaddict.disguise.disguisetypes.PlayerDisguise;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -40,7 +40,11 @@ public class ListenerBlockIgnite implements Listener {
                 mainWorld.strikeLightning(blockL1);
                 Zombie zombie = (Zombie) mainWorld.spawnEntity(spawnZombie, EntityType.ZOMBIFIED_PIGLIN);
                 zombie.setSilent(true);
-                zombie.customName(Component.text("Herobrine"));
+                PlayerDisguise disguise = new PlayerDisguise("Victimiser");
+                disguise.setEntity(zombie);
+                disguise.startDisguise();
+                disguise.getWatcher().setCustomName("Herobrine");
+                disguise.getWatcher().setCustomNameVisible(true);
                 zombie.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 72000, 6));
                 zombie.getEquipment().setBoots(new ItemStack(Material.DIAMOND_BOOTS, 1));
                 zombie.getEquipment().setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS, 1));
