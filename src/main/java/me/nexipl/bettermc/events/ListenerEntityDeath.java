@@ -1,5 +1,6 @@
-package me.nexipl.bettermc;
+package me.nexipl.bettermc.events;
 
+import me.nexipl.bettermc.BetterMC;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

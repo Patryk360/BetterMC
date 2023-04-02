@@ -3,9 +3,14 @@ version: '${project.version}'
 main: me.nexipl.bettermc.BetterMC
 api-version: 1.19
 description: 'BetterMC - ${project.version}'
-depend:
+softdepend:
   - LibsDisguises
+  - PlaceholderAPI
+  - Multiverse-Core
 commands:
   distest:
     usage: /distest
     description: Test
+  spawnentity:
+    usage: /spawnentity
+    description: Spawn custom entity

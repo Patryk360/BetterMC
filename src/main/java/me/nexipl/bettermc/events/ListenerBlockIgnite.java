@@ -1,11 +1,14 @@
-package me.nexipl.bettermc;
+package me.nexipl.bettermc.events;
 
 import me.libraryaddict.disguise.disguisetypes.PlayerDisguise;
+import me.nexipl.bettermc.BetterMC;
+import me.nexipl.bettermc.structures.herobrineHome;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.block.BlockState;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
@@ -16,9 +19,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import java.util.Objects;
 
-import static org.bukkit.Bukkit.getServer;
+import java.util.Objects;
 
 public class ListenerBlockIgnite implements Listener {
     private final Plugin plugin = BetterMC.getPlugin(BetterMC.class);
@@ -34,8 +36,6 @@ public class ListenerBlockIgnite implements Listener {
             Location blockL5 = new Location(mainWorld, event.getBlock().getState().getX(), event.getBlock().getState().getY()-5, event.getBlock().getState().getZ());
 
             Location spawnZombie = new Location(mainWorld, event.getBlock().getState().getX(), event.getBlock().getState().getY()-5, event.getBlock().getState().getZ()+5);
-
-            getServer().getLogger().info(String.valueOf(plugin.getConfig()));
 
             String blockT1 = String.valueOf(blockL1.getBlock().getType());
             String blockT2 = String.valueOf(blockL2.getBlock().getType());
@@ -63,6 +63,15 @@ public class ListenerBlockIgnite implements Listener {
                 zombie.getEquipment().setItemInMainHand(new ItemStack(Material.DIAMOND_PICKAXE));
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     player.sendMessage("Herobrine is coming back!");
+                }
+
+                herobrineHome home = new herobrineHome();
+                int[][] array = home.getHerobrineHome();
+
+                BlockState s = event.getBlock().getState();
+                for (int[] ints : array) {
+                    Location herobrineHomeLocation = new Location(mainWorld, s.getX()-5+ints[0], s.getY()-5+ints[1], s.getZ()-5+ints[2]);
+                    mainWorld.getBlockAt(herobrineHomeLocation).setType(Material.GLASS);
                 }
             }
         }

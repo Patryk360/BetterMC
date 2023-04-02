@@ -3,3 +3,12 @@ herobrine:
   armor: true
   drops:
     quantity: 3
+custommobs:
+  - holycow:
+      displayname: Holycow
+      type: COW
+      disguise: NeXiPL
+  - holybee:
+      displayname: Holybee
+      type: BEE
+      disguise: NeXiPL
