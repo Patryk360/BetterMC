@@ -19,10 +19,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-
 import java.util.Objects;
 
-public class ListenerBlockIgnite implements Listener {
+public class BlockIgnite implements Listener {
     private final Plugin plugin = BetterMC.getPlugin(BetterMC.class);
     @EventHandler
     public void onBlockIgnite(BlockIgniteEvent event) {
@@ -64,7 +63,6 @@ public class ListenerBlockIgnite implements Listener {
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     player.sendMessage("Herobrine is coming back!");
                 }
-
                 herobrineHome home = new herobrineHome();
                 int[][] array = home.getHerobrineHome();
 

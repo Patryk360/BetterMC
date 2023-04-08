@@ -6,7 +6,7 @@
 
     <groupId>me.nexipl</groupId>
     <artifactId>BetterMC</artifactId>
-    <version>0.9-SNAPSHOT</version>
+    <version>0.11-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>BetterMC</name>

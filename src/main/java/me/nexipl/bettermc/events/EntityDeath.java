@@ -8,7 +8,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
-public class ListenerEntityDeath implements Listener {
+public class EntityDeath implements Listener {
     private final Plugin plugin = BetterMC.getPlugin(BetterMC.class);
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
