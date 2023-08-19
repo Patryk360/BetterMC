@@ -1,5 +1,6 @@
 package me.nexipl.bettermc;
 
+import me.nexipl.bettermc.commands.bettermc;
 import me.nexipl.bettermc.commands.bettermcreload;
 import me.nexipl.bettermc.commands.distest;
 import me.nexipl.bettermc.commands.spawnentity;
@@ -14,8 +15,8 @@ public final class BetterMC extends JavaPlugin {
     @Override
     public void onEnable() {
         PluginManager p = Bukkit.getPluginManager();
-        if ((p.getPlugin("LibsDisguises") == null)) {
-            getLogger().warning("Couldn't find LibsDisguises, please install it! Plugin is disabling now!");
+        if ((p.getPlugin("LibsDisguises") == null) || (p.getPlugin("ProtocolLib") == null)) {
+            getLogger().warning("Couldn't find LibsDisguises, PlaceholderAPI or ProtocolLib please install it! Plugin is disabling now!");
             Bukkit.getPluginManager().disablePlugin(this);
         } else {
             this.saveDefaultConfig();
@@ -24,6 +25,8 @@ public final class BetterMC extends JavaPlugin {
             Objects.requireNonNull(this.getCommand("distest")).setExecutor(new distest());
             Objects.requireNonNull(this.getCommand("spawnentity")).setExecutor(new spawnentity());
             Objects.requireNonNull(this.getCommand("bettermcreload")).setExecutor(new bettermcreload());
+            Objects.requireNonNull(this.getCommand("bettermc")).setExecutor(new bettermc());
+
             getLogger().info("Plugin is enabling! Have a nice day!");
         }
     }

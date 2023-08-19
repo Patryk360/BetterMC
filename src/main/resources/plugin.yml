@@ -1,13 +1,13 @@
 name: BetterMC
 version: '${project.version}'
 main: me.nexipl.bettermc.BetterMC
-api-version: 1.19
+api-version: 1.20
 description: 'BetterMC - ${project.version}'
-softdepend:
+depend:
   - LibsDisguises
-  - NBTAPI
+  - ProtocolLib
+softdepend:
   - PlaceholderAPI
-  - Multiverse-Core
 commands:
   distest:
     usage: /distest
@@ -18,3 +18,6 @@ commands:
   bettermcreload:
     usage: /bettermcreload
     description: BetterMC reload
+  bettermc:
+    usage: /bettermc
+    description: BetterMC
