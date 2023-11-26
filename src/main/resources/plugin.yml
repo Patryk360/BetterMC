@@ -9,9 +9,6 @@ depend:
 softdepend:
   - PlaceholderAPI
 commands:
-  distest:
-    usage: /distest
-    description: Test
   spawnentity:
     usage: /spawnentity
     description: Spawn custom entity

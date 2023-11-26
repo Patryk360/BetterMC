@@ -2,7 +2,6 @@ package me.nexipl.bettermc;
 
 import me.nexipl.bettermc.commands.bettermc;
 import me.nexipl.bettermc.commands.bettermcreload;
-import me.nexipl.bettermc.commands.distest;
 import me.nexipl.bettermc.commands.spawnentity;
 import me.nexipl.bettermc.events.BlockIgnite;
 import me.nexipl.bettermc.events.EntityDeath;
@@ -22,7 +21,6 @@ public final class BetterMC extends JavaPlugin {
             this.saveDefaultConfig();
             getServer().getPluginManager().registerEvents(new BlockIgnite(), this);
             getServer().getPluginManager().registerEvents(new EntityDeath(), this);
-            Objects.requireNonNull(this.getCommand("distest")).setExecutor(new distest());
             Objects.requireNonNull(this.getCommand("spawnentity")).setExecutor(new spawnentity());
             Objects.requireNonNull(this.getCommand("bettermcreload")).setExecutor(new bettermcreload());
             Objects.requireNonNull(this.getCommand("bettermc")).setExecutor(new bettermc());
