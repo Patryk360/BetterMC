@@ -2,8 +2,8 @@ package me.nexipl.bettermc;
 
 import me.nexipl.bettermc.commands.bettermc;
 import me.nexipl.bettermc.commands.bettermcreload;
-import me.nexipl.bettermc.commands.spawnentity;
 import me.nexipl.bettermc.events.BlockIgnite;
+import me.nexipl.bettermc.events.DynmapWebChat;
 import me.nexipl.bettermc.events.EntityDeath;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
@@ -15,13 +15,15 @@ public final class BetterMC extends JavaPlugin {
     public void onEnable() {
         PluginManager p = Bukkit.getPluginManager();
         if ((p.getPlugin("LibsDisguises") == null) || (p.getPlugin("ProtocolLib") == null)) {
-            getLogger().warning("Couldn't find LibsDisguises, PlaceholderAPI or ProtocolLib please install it! Plugin is disabling now!");
+            getLogger().warning("Couldn't find LibsDisguises, ProtocolLib please install it! Plugin is disabling now!");
             Bukkit.getPluginManager().disablePlugin(this);
         } else {
             this.saveDefaultConfig();
             getServer().getPluginManager().registerEvents(new BlockIgnite(), this);
             getServer().getPluginManager().registerEvents(new EntityDeath(), this);
-            Objects.requireNonNull(this.getCommand("spawnentity")).setExecutor(new spawnentity());
+            if ((p.getPlugin("dynmap v3.7-beta-3-932") == null)) {
+                getServer().getPluginManager().registerEvents(new DynmapWebChat(), this);
+            }
             Objects.requireNonNull(this.getCommand("bettermcreload")).setExecutor(new bettermcreload());
             Objects.requireNonNull(this.getCommand("bettermc")).setExecutor(new bettermc());
 

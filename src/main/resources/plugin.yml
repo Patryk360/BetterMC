@@ -7,14 +7,14 @@ depend:
   - LibsDisguises
   - ProtocolLib
 softdepend:
+  - dynmap v3.7-beta-3-932
   - PlaceholderAPI
 commands:
-  spawnentity:
-    usage: /spawnentity
-    description: Spawn custom entity
   bettermcreload:
     usage: /bettermcreload
     description: BetterMC reload
+    permission: bettermc.bettermcreload
   bettermc:
     usage: /bettermc
     description: BetterMC
+    permission: bettermc.bettermc
