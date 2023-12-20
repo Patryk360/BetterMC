@@ -13,6 +13,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.Plugin;
 import java.util.Random;
 import java.util.Objects;
@@ -59,6 +60,7 @@ public class BlockIgnite implements Listener {
                 zombie.setCustomName("Herobrine");
                 zombie.setSwimming(true);
                 zombie.setVelocity(zombie.getLocation().getDirection().multiply(10.0));
+                zombie.setMetadata("herobrine", new FixedMetadataValue(plugin, true));
                 if (plugin.getConfig().getBoolean("herobrine.armor")) {
                     zombie.getEquipment().setBoots(new ItemStack(Material.DIAMOND_BOOTS, 1));
                     zombie.getEquipment().setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS, 1));
