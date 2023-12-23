@@ -13,7 +13,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.Plugin;
+import static org.apache.logging.log4j.LogManager.getLogger;
 
 public class PlayerInteract implements Listener {
     private final Plugin plugin = BetterMC.getPlugin(BetterMC.class);
@@ -33,11 +35,22 @@ public class PlayerInteract implements Listener {
                         event.getClickedBlock().setType(Material.AIR);
                         block.getLocation().getWorld().spawnParticle(Particle.ENCHANTMENT_TABLE, block.getLocation(), 50);
                     }, 20L);
-                } else {
-                    if (event.hasItem()) {
-                        ItemStack item = event.getItem();
+                }
+                if (event.hasItem()) {
+                    ItemStack item = event.getItem();
+                    getLogger().info(item.getType());
+                    if (item.getType() != Material.AIR) {
                         NBTItem nbti = new NBTItem(item);
-                        chest.setLock(nbti.getString("chestlock"));
+                        getLogger().info(nbti.getString("keyPass"));
+                        if (!chest.hasMetadata("keyPass")) {
+                            getLogger().info("chest is not locked");
+                            chest.setMetadata("keyPass", new FixedMetadataValue(plugin, nbti.getString("keyPass")));
+                        }
+                        getLogger().info(chest.hasMetadata("keyPass"));
+                    } else {
+                        if (chest.hasMetadata("keyPass")) {
+                            event.setCancelled(true);
+                        }
                     }
                 }
             }
