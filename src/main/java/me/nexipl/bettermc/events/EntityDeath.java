@@ -14,7 +14,7 @@ public class EntityDeath implements Listener {
     private final Random random = new Random();
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
-        if (!event.getEntity().getMetadata("herobrine").isEmpty()) {
+        if (event.getEntity().hasMetadata("herobrine")) {
             event.getDrops().clear();
             if (plugin.getConfig().getBoolean("herobrine.drops.enable")) {
                 int min = plugin.getConfig().getInt("herobrine.drops.minQuantity");

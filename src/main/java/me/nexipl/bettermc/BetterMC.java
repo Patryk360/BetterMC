@@ -2,9 +2,9 @@ package me.nexipl.bettermc;
 
 import me.nexipl.bettermc.commands.bettermc;
 import me.nexipl.bettermc.commands.bettermcreload;
-import me.nexipl.bettermc.events.BlockIgnite;
-import me.nexipl.bettermc.events.DynmapWebChat;
-import me.nexipl.bettermc.events.EntityDeath;
+import me.nexipl.bettermc.commands.getchestbox;
+import me.nexipl.bettermc.commands.getchestkey;
+import me.nexipl.bettermc.events.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,11 +21,15 @@ public final class BetterMC extends JavaPlugin {
             this.saveDefaultConfig();
             getServer().getPluginManager().registerEvents(new BlockIgnite(), this);
             getServer().getPluginManager().registerEvents(new EntityDeath(), this);
-            if ((p.getPlugin("dynmap v3.7-beta-3-932") == null)) {
-                getServer().getPluginManager().registerEvents(new DynmapWebChat(), this);
-            }
+            getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
+            getServer().getPluginManager().registerEvents(new InventoryOpen(), this);
+            getServer().getPluginManager().registerEvents(new JoinPlayer(), this);
+            getServer().getPluginManager().registerEvents(new BlockPlace(), this);
+
             Objects.requireNonNull(this.getCommand("bettermcreload")).setExecutor(new bettermcreload());
             Objects.requireNonNull(this.getCommand("bettermc")).setExecutor(new bettermc());
+            Objects.requireNonNull(this.getCommand("getchestbox")).setExecutor(new getchestbox());
+            Objects.requireNonNull(this.getCommand("getchestkey")).setExecutor(new getchestkey());
 
             getLogger().info("Plugin is enabling! Have a nice day!");
         }
