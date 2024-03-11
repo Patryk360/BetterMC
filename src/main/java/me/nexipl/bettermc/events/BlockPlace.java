@@ -23,7 +23,7 @@ public class BlockPlace implements Listener {
                 Block block = event.getBlock();
                 Chest chest = (Chest) block.getState();
                 chest.setMetadata("boxsilver", new FixedMetadataValue(plugin, true));
-                block.getLocation().getWorld().spawnParticle(Particle.EXPLOSION_HUGE, block.getLocation(), 100);
+                block.getLocation().getWorld().spawnParticle(Particle.EXPLOSION_NORMAL, block.getLocation(), 100);
             }
         }
     }

@@ -23,7 +23,7 @@ public final class BetterMC extends JavaPlugin {
             getServer().getPluginManager().registerEvents(new EntityDeath(), this);
             getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
             getServer().getPluginManager().registerEvents(new InventoryOpen(), this);
-            getServer().getPluginManager().registerEvents(new JoinPlayer(), this);
+            getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
             getServer().getPluginManager().registerEvents(new BlockPlace(), this);
 
             Objects.requireNonNull(this.getCommand("bettermcreload")).setExecutor(new bettermcreload());

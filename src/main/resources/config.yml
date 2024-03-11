@@ -1,9 +1,12 @@
+soundOnDeath:
+    enable: true
+    soundId: TonyIggy-Astronomia
 dynmapWebChatInGame: true
 herobrine:
-  usernameSkin: Herobro8r
-  totemEnable: true
-  armor: true
-  drops:
-    enable: true
-    maxQuantity: 3
-    minQuantity: 1
+    usernameSkin: Herobro8r
+    totemEnable: true
+    armor: true
+    drops:
+        enable: true
+        maxQuantity: 3
+        minQuantity: 1
