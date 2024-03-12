@@ -6,6 +6,7 @@ description: 'BetterMC - ${project.version}'
 depend:
   - LibsDisguises
   - ProtocolLib
+  - NBTAPI
 softdepend:
   - dynmap v3.7-beta-3-932
   - PlaceholderAPI

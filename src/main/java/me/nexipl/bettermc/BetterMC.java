@@ -14,8 +14,8 @@ public final class BetterMC extends JavaPlugin {
     @Override
     public void onEnable() {
         PluginManager p = Bukkit.getPluginManager();
-        if ((p.getPlugin("LibsDisguises") == null) || (p.getPlugin("ProtocolLib") == null)) {
-            getLogger().warning("Couldn't find LibsDisguises, ProtocolLib please install it! Plugin is disabling now!");
+        if ((p.getPlugin("LibsDisguises") == null) || (p.getPlugin("ProtocolLib") == null)|| (p.getPlugin("NBTAPI") == null)) {
+            getLogger().warning("Couldn't find LibsDisguises, ProtocolLib, NBTAPI please install it! Plugin is disabling now!");
             Bukkit.getPluginManager().disablePlugin(this);
         } else {
             this.saveDefaultConfig();
@@ -23,7 +23,7 @@ public final class BetterMC extends JavaPlugin {
             getServer().getPluginManager().registerEvents(new EntityDeath(), this);
             getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
             getServer().getPluginManager().registerEvents(new InventoryOpen(), this);
-            getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
+            if (p.getPlugin("GMusic") != null) getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
             getServer().getPluginManager().registerEvents(new BlockPlace(), this);
 
             Objects.requireNonNull(this.getCommand("bettermcreload")).setExecutor(new bettermcreload());

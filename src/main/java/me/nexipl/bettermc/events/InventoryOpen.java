@@ -9,8 +9,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.ItemStack;
 
-import static org.apache.logging.log4j.LogManager.getLogger;
-
 public class InventoryOpen implements Listener {
     @EventHandler
     public void onInventoryOpen(InventoryOpenEvent event) {
@@ -20,7 +18,6 @@ public class InventoryOpen implements Listener {
                 event.setCancelled(true);
             }
             ItemStack itemHand = event.getPlayer().getInventory().getItemInMainHand();
-            getLogger().info(itemHand.getType());
             if (itemHand.getType() != Material.AIR) {
                 if (chest.hasMetadata("keyPass")) {
                     NBTItem nbti = new NBTItem(itemHand);

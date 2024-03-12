@@ -6,9 +6,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
-
 public class bettermc implements CommandExecutor {
     private final Plugin plugin = BetterMC.getPlugin(BetterMC.class);
     @Override

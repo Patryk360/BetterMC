@@ -32,10 +32,10 @@ public class BlockIgnite implements Listener {
             Location blockL4 = new Location(mainWorld, event.getBlock().getState().getX(), event.getBlock().getState().getY()-4, event.getBlock().getState().getZ());
             Location blockL5 = new Location(mainWorld, event.getBlock().getState().getX(), event.getBlock().getState().getY()-5, event.getBlock().getState().getZ());
 
-            int minX = -20;
-            int maxX = 20;
-            int minZ = -20;
-            int maxZ = 20;
+            int minX = -10;
+            int maxX = 10;
+            int minZ = -10;
+            int maxZ = 10;
 
             int x = random.nextInt(maxX - minX + 1) + minX;
             int z = random.nextInt(maxZ - minZ + 1) + minZ;

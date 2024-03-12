@@ -1,9 +1,8 @@
 soundOnDeath:
     enable: true
     soundId: TonyIggy-Astronomia
-dynmapWebChatInGame: true
 herobrine:
-    usernameSkin: Herobro8r
+    usernameSkin: Herobrine
     totemEnable: true
     armor: true
     drops:
