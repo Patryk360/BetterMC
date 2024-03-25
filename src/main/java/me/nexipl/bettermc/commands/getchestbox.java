@@ -17,9 +17,9 @@ public class getchestbox implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player player) {
             ItemStack chestBoxSilver = new ItemStack(Material.CHEST);
-            NBTItem nbti = new NBTItem(chestBoxSilver);
-            nbti.setBoolean("boxsilver", true);
-            chestBoxSilver = nbti.getItem();
+            NBTItem NBT = new NBTItem(chestBoxSilver);
+            NBT.setBoolean("boxsilver", true);
+            chestBoxSilver = NBT.getItem();
 
             if (player.getInventory().firstEmpty() != -1) {
                 player.getInventory().addItem(chestBoxSilver);

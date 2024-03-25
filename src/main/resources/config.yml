@@ -1,11 +1,21 @@
 soundOnDeath:
-    enable: true
+    enable: false
     soundId: TonyIggy-Astronomia
 herobrine:
     usernameSkin: Herobrine
     totemEnable: true
-    armor: true
+    armorEnable: true
+    armor:
+        head: DIAMOND_HELMET
+        body: DIAMOND_CHESTPLATE
+        legs: DIAMOND_LEGGINGS
+        foot: DIAMOND_BOOTS
     drops:
         enable: true
+        item: DIAMOND
         maxQuantity: 3
         minQuantity: 1
+milk:
+    enable: false
+    saturation: 5
+    hunger: 4

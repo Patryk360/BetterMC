@@ -6,13 +6,13 @@
 
     <groupId>me.nexipl</groupId>
     <artifactId>BetterMC</artifactId>
-    <version>0.16-SNAPSHOT</version>
+    <version>0.20-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>BetterMC</name>
 
     <properties>
-        <java.version>20</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.version>1.8.20</kotlin.version>
     </properties>
@@ -56,7 +56,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <jvmTarget>20</jvmTarget>
+                    <jvmTarget>17</jvmTarget>
                 </configuration>
             </plugin>
             <plugin>

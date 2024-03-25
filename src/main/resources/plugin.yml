@@ -8,22 +8,35 @@ depend:
   - ProtocolLib
   - NBTAPI
 softdepend:
-  - dynmap v3.7-beta-3-932
   - PlaceholderAPI
 commands:
   bettermcreload:
     usage: /bettermcreload
     description: BetterMC reload
     permission: bettermc.bettermcreload
+    permission-message: You do not have permission!
   bettermc:
     usage: /bettermc
-    description: BetterMC
+    description: BetterMC info
     permission: bettermc.bettermc
+    permission-message: You do not have permission!
   getchestbox:
     usage: /getchestbox
-    description: BetterMC
+    description: Get chest box
     permission: bettermc.getchestbox
+    permission-message: You do not have permission!
   getchestkey:
     usage: /getchestkey
-    description: BetterMC
+    description: Get key to lock chest
     permission: bettermc.getchestkey
+    permission-message: You do not have permission!
+  getchestunlock:
+    usage: /getchestunlock
+    description: Get key to unlock chest
+    permission: bettermc.getchestunlock
+    permission-message: You do not have permission!
+  hideandseek:
+    usage: /hideandseek
+    description: Hide and seek
+    permission: bettermc.hideandseek
+    permission-message: You do not have permission!

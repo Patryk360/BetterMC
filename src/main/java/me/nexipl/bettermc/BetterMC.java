@@ -1,9 +1,6 @@
 package me.nexipl.bettermc;
 
-import me.nexipl.bettermc.commands.bettermc;
-import me.nexipl.bettermc.commands.bettermcreload;
-import me.nexipl.bettermc.commands.getchestbox;
-import me.nexipl.bettermc.commands.getchestkey;
+import me.nexipl.bettermc.commands.*;
 import me.nexipl.bettermc.events.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
@@ -23,13 +20,16 @@ public final class BetterMC extends JavaPlugin {
             getServer().getPluginManager().registerEvents(new EntityDeath(), this);
             getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
             getServer().getPluginManager().registerEvents(new InventoryOpen(), this);
-            if (p.getPlugin("GMusic") != null) getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
+            getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
+            getServer().getPluginManager().registerEvents(new PlayerItemConsume(), this);
             getServer().getPluginManager().registerEvents(new BlockPlace(), this);
 
             Objects.requireNonNull(this.getCommand("bettermcreload")).setExecutor(new bettermcreload());
             Objects.requireNonNull(this.getCommand("bettermc")).setExecutor(new bettermc());
             Objects.requireNonNull(this.getCommand("getchestbox")).setExecutor(new getchestbox());
             Objects.requireNonNull(this.getCommand("getchestkey")).setExecutor(new getchestkey());
+            Objects.requireNonNull(this.getCommand("getchestunlock")).setExecutor(new getchestunlock());
+            Objects.requireNonNull(this.getCommand("hideandseek")).setExecutor(new hideandseek());
 
             getLogger().info("Plugin is enabling! Have a nice day!");
         }
