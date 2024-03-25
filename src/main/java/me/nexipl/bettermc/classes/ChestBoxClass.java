@@ -10,7 +10,6 @@ import org.bukkit.block.Lidded;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
@@ -68,31 +67,6 @@ public class ChestBoxClass {
                 Chest chest = (Chest) block.getState();
                 chest.setMetadata("boxsilver", new FixedMetadataValue(plugin, true));
                 block.getLocation().getWorld().spawnParticle(Particle.EXPLOSION_NORMAL, block.getLocation(), 100);
-            }
-        }
-    }
-    public void onChestBoxOpenInv(InventoryOpenEvent event) {
-        Location location = event.getInventory().getLocation();
-        if (location != null) {
-            Block block = event.getInventory().getLocation().getBlock();
-            if (block.getState() instanceof Chest chest) {
-                if (block.hasMetadata("boxsilver")) {
-                    event.setCancelled(true);
-                }
-                ItemStack itemHand = event.getPlayer().getInventory().getItemInMainHand();
-                if (itemHand.getType() != Material.AIR) {
-                    if (chest.hasMetadata("keyPass")) {
-                        NBTItem nbti = new NBTItem(itemHand);
-                        String chestKey = chest.getMetadata("keyPass").get(0).asString();
-                        if (!chestKey.equals(nbti.getString("keyPass"))) {
-                            event.setCancelled(true);
-                        }
-                    }
-                } else {
-                    if (chest.hasMetadata("keyPass")) {
-                        event.setCancelled(true);
-                    }
-                }
             }
         }
     }

@@ -10,6 +10,8 @@ herobrine:
         body: DIAMOND_CHESTPLATE
         legs: DIAMOND_LEGGINGS
         foot: DIAMOND_BOOTS
+        leftHand: DIAMOND_PICKAXE
+        rightHand: DIAMOND_PICKAXE
     drops:
         enable: true
         item: DIAMOND

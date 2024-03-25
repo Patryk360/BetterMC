@@ -57,15 +57,29 @@ public class HerobrineClass {
                 disguise.getWatcher().setCustomNameVisible(true);
                 zombie.setCustomName("Herobrine");
                 zombie.setSwimming(true);
-                zombie.setVelocity(zombie.getLocation().getDirection().multiply(10.0));
+                zombie.setVelocity(zombie.getLocation().getDirection().multiply(8.0));
                 zombie.setMetadata("herobrine", new FixedMetadataValue(plugin, true));
+
                 if (plugin.getConfig().getBoolean("herobrine.armorEnable")) {
-                    zombie.getEquipment().setBoots(new ItemStack(Material.DIAMOND_BOOTS, 1));
-                    zombie.getEquipment().setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS, 1));
-                    zombie.getEquipment().setChestplate(new ItemStack(Material.DIAMOND_CHESTPLATE, 1));
-                    zombie.getEquipment().setHelmet(new ItemStack(Material.DIAMOND_HELMET, 1));
+                    if (sTA(plugin.getConfig().getString("herobrine.armor.head")) != null) {
+                        zombie.getEquipment().setHelmet(new ItemStack(sTA(plugin.getConfig().getString("herobrine.armor.head")), 1));
+                    }
+                    if (sTA(plugin.getConfig().getString("herobrine.armor.body")) != null) {
+                        zombie.getEquipment().setChestplate(new ItemStack(sTA(plugin.getConfig().getString("herobrine.armor.body")), 1));
+                    }
+                    if (sTA(plugin.getConfig().getString("herobrine.armor.legs")) != null) {
+                        zombie.getEquipment().setLeggings(new ItemStack(sTA(plugin.getConfig().getString("herobrine.armor.legs")), 1));
+                    }
+                    if (sTA(plugin.getConfig().getString("herobrine.armor.foot")) != null) {
+                        zombie.getEquipment().setBoots(new ItemStack(sTA(plugin.getConfig().getString("herobrine.armor.foot")), 1));
+                    }
                 }
-                zombie.getEquipment().setItemInMainHand(new ItemStack(Material.DIAMOND_PICKAXE));
+                if (sTH(plugin.getConfig().getString("herobrine.armor.rightHand")) != null) {
+                    zombie.getEquipment().setItemInMainHand(new ItemStack(sTH(plugin.getConfig().getString("herobrine.armor.leftHand"))));
+                }
+                if (sTH(plugin.getConfig().getString("herobrine.armor.leftHand")) != null) {
+                    zombie.getEquipment().setItemInOffHand(new ItemStack(sTH(plugin.getConfig().getString("herobrine.armor.leftHand"))));
+                }
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     player.sendMessage("Herobrine is coming back!");
                 }
@@ -79,8 +93,40 @@ public class HerobrineClass {
                 int min = plugin.getConfig().getInt("herobrine.drops.minQuantity");
                 int max = plugin.getConfig().getInt("herobrine.drops.maxQuantity");
                 int quantity = random.nextInt(max - min + 1) + min;
-                event.getDrops().add(new ItemStack(Material.DIAMOND, quantity));
+                if (sTD(plugin.getConfig().getString("herobrine.drops.item")) != null) {
+                    event.getDrops().add(new ItemStack(sTD(plugin.getConfig().getString("herobrine.drops.item")), quantity));
+                }
+            }
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                player.sendMessage("Remember, I always come back!");
             }
         }
+    }
+    private Material sTA(String material) {
+        if (Objects.equals(material, "DIAMOND_LEGGINGS")) {
+            return Material.DIAMOND_LEGGINGS;
+        }
+        else if (Objects.equals(material, "DIAMOND_BOOTS")) {
+            return Material.DIAMOND_BOOTS;
+        }
+        else if (Objects.equals(material, "DIAMOND_CHESTPLATE")) {
+            return Material.DIAMOND_CHESTPLATE;
+        }
+        else if (Objects.equals(material, "DIAMOND_HELMET")) {
+            return Material.DIAMOND_HELMET;
+        }
+        return null;
+    }
+    private Material sTH(String material) {
+        if (Objects.equals(material, "DIAMOND_PICKAXE")) {
+            return Material.DIAMOND_PICKAXE;
+        }
+        return null;
+    }
+    private  Material sTD(String material) {
+        if (Objects.equals(material, "DIAMOND")) {
+            return Material.DIAMOND;
+        }
+        return null;
     }
 }
