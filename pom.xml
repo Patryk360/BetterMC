@@ -6,13 +6,13 @@
 
     <groupId>me.nexipl</groupId>
     <artifactId>BetterMC</artifactId>
-    <version>0.20-SNAPSHOT</version>
+    <version>0.22-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>BetterMC</name>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.version>1.8.20</kotlin.version>
     </properties>
@@ -154,7 +154,7 @@
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.20.4-R0.1-SNAPSHOT</version>
+            <version>1.21.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

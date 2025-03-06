@@ -8,7 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Zombie;
+import org.bukkit.entity.PigZombie;
 import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
@@ -48,7 +48,7 @@ public class HerobrineClass {
             if ((Objects.equals(blockT1, "QUARTZ_BLOCK")) && (Objects.equals(blockT2, "GOLD_BLOCK")) && (Objects.equals(blockT3, "GOLD_BLOCK")) && (Objects.equals(blockT4, "GOLD_BLOCK")) && (Objects.equals(blockT5, "GOLD_BLOCK"))) {
                 mainWorld.getBlockAt(blockL1).setType(Material.NETHERRACK);
                 mainWorld.strikeLightning(blockL1);
-                Zombie zombie = (Zombie) mainWorld.spawnEntity(spawnZombie, EntityType.PIG_ZOMBIE);
+                PigZombie zombie = (PigZombie) mainWorld.spawnEntity(spawnZombie, EntityType.PIG_ZOMBIE);
                 zombie.setSilent(true);
                 PlayerDisguise disguise = new PlayerDisguise(plugin.getConfig().getString("herobrine.usernameSkin"));
                 disguise.setEntity(zombie);
@@ -57,7 +57,6 @@ public class HerobrineClass {
                 disguise.getWatcher().setCustomNameVisible(true);
                 zombie.setCustomName("Herobrine");
                 zombie.setSwimming(true);
-                zombie.setVelocity(zombie.getLocation().getDirection().multiply(8.0));
                 zombie.setMetadata("herobrine", new FixedMetadataValue(plugin, true));
 
                 if (plugin.getConfig().getBoolean("herobrine.armorEnable")) {
